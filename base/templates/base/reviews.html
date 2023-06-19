@@ -1,0 +1,89 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <section class="reviewsection" id="reviews">
+    <nav class="images" > <img id='prev'src='{% static "images/arrow-left-double-fill.svg" %}' alt="" ></nav>
+     
+        <div class="Reviews">
+            <nav class="reviews">
+                <img src='{% static "images/6a7ad290b0ee96e909e7d34e0494e45d.svg" %}' alt="" >
+            </nav>
+         
+          
+          {% for review in reviews%}
+            <nav class="slides review">
+                
+                <h2>{{review.name}}</h2>
+                <p>{{review.message}}</p>
+                
+            </nav>
+           {% endfor %}
+      
+          
+            
+        </div>
+      <nav class="images"><img id="next" src='{% static "images/arrow-right-double-fill.svg" %}' alt=""></nav>  
+        
+
+    </section>
+
+    <section class="reviewform">
+       <div style="margin-bottom:90px;">
+        <h2>Write a review</h2>
+       </div>
+
+       <div>
+        <form action="" method="POST" class="reviewform">
+
+            {% csrf_token %}
+
+            <div class="reviewform extracss" >
+                 <label for="Name" style="margin-bottom: 15px;">Name :</label>
+                 <input type="text" placeholder="Enter your Name" name="Name" required>
+            </div>
+            <div class="extracss">
+                <label for="Email" style="margin-bottom: 15px;">E-mail :</label>
+                <input type="email" placeholder="Enter your Email" name="E-mail" >
+            </div>
+            <div class="reviewinput extracss">
+                <label for="review"> Review :</label>
+                <input type="text" placeholder="Enter your review" name="Message" maxlength="120" style="width:99%" required>
+            </div>
+            <input type="submit" value="SUBMIT REVIEW" class="submit">
+
+            {% if messages %}
+       <ul class="messages" style="display:grid; place-content: center;">
+      
+        </form>
+       
+       </div>
+        
+       
+
+    </section>
+
+    <nav id="messages" style="display: grid; place-content: center;">
+        
+    {% for message in messages %}
+       
+    <li id="list" style="color: purple; display: block; justify-content: center;">{{message}}  <button id="close" style="display:block; place-content: center; margin-right: 40px;" >close message</button></li>
+      {% endfor %}
+      {% endif %}
+    
+    </nav>
+ 
+ </main>
+
+
+{% endblock %}
+
+{% block script %}
+<script src='{% static "js/main.js" %}'></script>
+
+{% endblock script %}
+
+
+

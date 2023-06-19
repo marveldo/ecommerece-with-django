@@ -1,0 +1,69 @@
+{% extends 'main2.html' %}
+{% load static %}
+
+{% block content %}
+<body class="login"></body>
+<main class="loginform">
+
+
+
+    {% if page == 'register' %}
+    <form class="loginform" action="{% url  'register' %}" method ="POST" style="margin-top: 40%;">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="divform">
+            <label style="margin-bottom: 1%;" for="Username">{{field.label}}</label>
+            {{field}}
+        </div>
+       {% endfor %}
+        <div class="submit"> <input class="submit" type="submit" value="submit" required>
+            
+        </div>
+       
+    </form>
+
+   
+
+    {% else %}
+       
+
+    <form class="loginform" action="{% url  'login' %}" method ="POST" style="margin-top: 40%;">
+        {% csrf_token %}
+        <div class="divform">
+            <label for="Username">Username :</label>
+            <input type="text" class="input-loginform" name="Username" required>
+        </div>
+
+        <div class="divform">
+            <label for="">Password : </label>
+            <input type="password" class="input-loginform" name="Password" required>
+        </div>
+        <div class="submit"> <input class="submit" type="submit" value="submit" required>
+            <p style="margin:30px">Dont have an account <a href="{% url 'register' %}"> click here</a></p>
+            <p style="margin:30px">Forgotten password?<a href="{% url 'reset_password' %}"> click here</a></p>
+        </div>
+       
+    </form>
+
+   
+
+    {% endif %}
+
+    
+</main>
+
+</body>
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

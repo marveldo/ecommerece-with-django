@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<main style="margin-bottom: 5%;">
+    <section class="shop">
+        <div class="shopcontent">
+            <span class='exclusive' >shop online exclusives</span>
+            <h1 class="shop" >Body <span style="color: white">Handlings</span> </h1>
+        </div>
+        <div class="shopimage">
+            <img src='{% static "images/newpic.jpg" %}' alt="">
+        </div>
+    </section>
+    <nav class="categories">
+        <li>New arrivals</li>
+         
+    </nav>
+    <section class="items">
+        {% for item in items%}
+    <nav>
+       
+        <a href="{% url 'bookonline' item.id %}">
+            <div class="Items" >
+                <img src='{{item.item_image.url}}' alt="" >
+
+                <span>{{item.item_name}}</span>
+
+                <span>#{{item.price}}</span>
+
+              
+            </div>
+        </a>
+        {% if request.user.is_staff %}
+        <a  style="display: grid; place-content: center;"><button class="Button" data-id="{{item.id}}" data-action="delete" style="display: grid; place-content: center;">delete</button></a>
+         {% endif %}
+    </nav>
+     {% endfor %}
+   
+       
+       
+         
+       
+    </section>
+</main>
+{% if request.user.is_staff %}
+<a href="{% url 'createitems'%}" style="display: grid; place-content: center;"><button style="display: grid; place-content: center;">Add New</button></a>
+{% endif %}
+<footer>
+    <h1>Solorit inc.</h1>
+    <span>2022 production company</span>
+</footer> 
+{% endblock %}
+  
+{% block script %}
+
+<script src="{% static 'js/shop.js' %}"></script>
+
+{% endblock %}

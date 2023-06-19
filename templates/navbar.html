@@ -1,0 +1,67 @@
+<header class="header el">
+    <nav class="head">
+        <h1>Solorit enterprise</h1>
+        {% if page == 'shoppingbag' %}
+        <a href= "{% url 'shoppingbag'%}" style="color: lightcoral ;"><i class="fa-regular fa-bag-shopping"></i></a> 
+        {% else %}
+       <a href= "{% url 'shoppingbag'%}" style="color:purple;"><i class="fa-regular fa-bag-shopping"></i></a> 
+        {% endif %}  
+        <form action="" method='get'>
+            
+            <input type="search" placeholder="Search" class="search">
+            <input type="submit" value="Search" style="width: 50px;">
+        </form>
+    
+    </nav>
+    <nav class="list">
+        {% if page == 'home' %}
+        <li><a href="{% url 'home' %}" style="color: pink">Home</a></li>
+        {% else %}
+        <li><a href="{% url 'home' %}">Home</a> </li>
+        {% endif %} 
+         
+        {% if page == 'reviews' %}
+        <li><a href="{% url 'reviews' %}" style="color: pink">Reviews</a></li>
+        {%else%}
+        <li> <a href="{% url 'reviews' %}">Reviews</a></li>
+        {% endif %}
+
+        {% if page == 'theteam' %}
+        <li><a href="{% url 'Theteam' %}" style="color: pink">The team</a></li>
+        {% else %}
+        <li><a href="{% url 'Theteam' %}">The team</a></li>
+        {% endif %}
+
+        {% if page == 'shop' %}
+        <li><a href="{% url 'shop' %}" style="color: pink">Shop</a></li>
+        {% else %}
+        <li><a href="{% url 'shop' %}">Shop</a></li>
+        {% endif %}
+        
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        {% if page == 'login' %}
+        <li><a href="{% url 'login' %}" style="color: pink">Login</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+        {% endif %}
+
+        {% if request.user.is_staff %}
+
+        {% if page == 'orders'%}
+        <li><a href="{% url 'orders' %}" style="color: pink">Orders</a></li>
+        {% else %}
+        <li><a href="{% url 'orders' %}">Orders</a></li>
+
+        {% endif %}
+
+        {% endif %}
+
+
+        
+        
+        
+    </nav>
+ </header>

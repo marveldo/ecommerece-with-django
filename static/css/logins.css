@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Raleway:wght@600&family=Roboto+Condensed:wght@700&display=swap');
+
+*{   margin :0;
+     padding:0;
+    font-family:  'Fugaz One', cursive; ;
+}
+html{
+    height: 100%;
+}
+body.login{
+    height:60%;
+   
+    background-color: #FFC0CB;
+    color: purple;
+   
+}
+body.form{
+    background-color: #FFC0CB;
+    color: purple;
+   
+}
+main.loginform{
+    display: grid;
+    place-content: center;
+    height:100%;
+}
+h1.loginform{
+    display:grid;
+    place-content: center;
+    margin-bottom: 3%;
+}
+form.loginform{
+    
+    display:grid;
+    place-content: center;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1em;
+    color: purple;
+    
+}
+div.divform{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 0.2em;
+}
+input.input-loginform{
+    width:400px;
+    height:50px;
+    border-radius: 30px;
+    background-color:  #FFC0CB;
+    
+}
+div.submit{
+    display:grid;
+    place-content: center;
+   
+}
+input.submit{
+    background-color: #9F2B68;
+}
+
+@media (max-width:700px){
+    input.input-loginform{
+        width:200px;
+    }
+}

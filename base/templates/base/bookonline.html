@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <section class="bookingitem" id="bookonline">
+        <nav class="itemimage"><img src='{{item.item_image.url}}'alt="" class="bookonline">
+            {% if request.user.is_staff %}
+            <h1 style="margin-bottom: 9%;"><a href='{% url "update" item.id %}'><button>Update</button></a></h1>
+            {% endif %}
+             
+        </nav>
+       
+        <nav class="itemabout">
+            <h5 class="bookonline">{{item.item_name}}</h5>
+            <span>#{{item.price}}</span>
+            <p class="bookonline" style="margin-bottom: 30px;">{{item.item_about}}</p>
+            <a id="showdiv" class="bookonline"><button class="action-button" data-id="{{item.id}}" data-action="add">Add to bag</button></a>
+      
+            <p id="paragraph"></p>
+            
+        </nav>
+       
+
+    </section>
+    
+ </main>
+ 
+
+
+{% endblock content %}
+
+{% block script %}
+
+<script src="{% static 'js/function.js' %}"></script>
+
+{% endblock script %}

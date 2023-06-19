@@ -1,0 +1,81 @@
+{% extends 'main2.html' %}
+{% load static %}
+{% block content %}
+
+<nav class="shopping-bag">
+    <h1 class="shopping-bag">Your Pending Orders</h1>
+    </nav>
+    <style>
+        section.shoppimg-bag{
+            display:block;
+        }
+        div.column{
+            grid-template-columns: repeat(5 1fr);
+        }
+        div.rows{
+            grid-template-columns:  repeat(5 1fr);
+        }
+        h2.shopping-list{
+                display: block;
+                 font-size: 30px;
+            }
+        @media (max-width:900px){
+            h2.shopping-list{
+                display: block;
+                 font-size: 15px;
+            }
+        }
+
+        
+    </style>
+
+   <section class="shopping-bag">
+     <div class="shopping-items">
+
+        <div class="shopping-list">
+            <div class="columm">
+
+                <div class="shopping-list">Product</div>
+
+                <div class="shopping-list">Name</div>
+               
+                <div class="shopping-list">Total</div>
+
+                <div class="shopping-list">Address</div>
+            </div>
+            {% for order in orders %}
+            <div class="rows">
+               
+                <div class="shopping-list"  ><nav class="img" style="display: block;">
+                    {% for order in order.orderitem_set.all %}
+                    <h2 class="shopping-list"  >{{order.item.item_name}} X {{order.quantity}}</h2>
+                   
+                    {% endfor %}
+                </nav></div>
+                <div class="shopping-list"  ><nav class="img" style="display: block;"><h2 class="shopping-list" >Mr {{order.lastname}}</h2></nav></div>
+              
+                <div class="shopping-list"><nav class="rows">${{order.totalbill}} </nav> </div>
+                <div class="shopping-list"><h2 class="shopping-list">{{order.Address}}</h2></div>
+                <div class="shopping-list" style="display: grid; place-content: center;"><button id="Complete" data-id="{{order.id}}" data-action="complete">Complete</button></div>
+
+                
+            </div>
+           {% endfor %}
+           
+    
+       
+        </div>
+        
+
+     </div>
+ 
+    
+   </section>
+</body>
+{% endblock %}
+
+{% block script %}
+
+<script src="{% static 'js/completeorder.js' %}"></script>
+
+{% endblock script %}

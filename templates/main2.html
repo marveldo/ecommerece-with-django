@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/c71266f97b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/shoppingbag.css' %}">
+    <link rel="stylesheet" href="{% static   'css/logins.css'  %}">
+    <script type="text/javascript" src="{% static 'js/cookie.js' %}"> </script>
+    <script type="text/javascript">
+      let user = '{{request.user}}'
+      console.log(user)
+    </script>
+    
+   
+</head>
+<body>
+{% include 'navbar2.html' %} 
+{% block content %}
+
+     
+
+
+
+{% endblock %}
+
+    {% if messages %}
+    <ul class="messages" id="messages" style="display:grid; place-content: center;">
+    {% for message in messages %}
+    
+   <li id="list" style="color: purple; display: block; justify-content: center;">{{message}}  <button id="close" style="display:block; place-content: center; margin-right: 40px;" >close message</button></li>
+    {% endfor %}
+    {% endif %}
+   
+
+</body>
+<script src="{% static 'js/main.js' %}"></script>
+{% block script %}
+
+{% endblock script %}
+
+</html>

@@ -1,0 +1,58 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+
+<main class="checkout">
+    <section class="checkout">
+        <h3 class="checkout">Payment on delivery !!</h3>
+
+        <form action="" method="POST" class="checkoutform"> 
+            {% csrf_token %}
+            <div class="checkoutform">
+                <label for="First Name" class="checkoutform">First Name:</label>
+                <input type="text" name="firstname" required>
+            </div>
+            <div class="checkoutform">
+                <label for="Phone Number" class="checkoutform">Last Name :</label>
+                <input type="text" name="lastname" required>
+            </div>
+            <div class="checkoutform">
+                <label for="Phone Number" class="checkoutform">Phone Number :</label>
+                <input type="text" name="phonenumber" required>
+            </div>
+            <div class="checkoutform">
+                <label for="Email" class="checkoutform">E-mail :</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class="checkoutform">
+                <label for="Location" class="checkoutform" >Location :</label>
+                <input type="text" name="location" value="{{location.country}},{{location.countryCode}},{{location.city}},{{location.isp}},{{location.zip}}" required>
+            </div>
+            {% if location.city == 'Lagos' or location.city == 'Gbagada'%}
+            <div class="checkoutform">
+                <label for="Address" class="checkoutform"> Address  :</label>
+                <input type="text" name='address' required>
+               
+            </div>
+            
+            <div class="checkoutform"><button class="summary">Place Order</button></div>
+            {% else %}
+            <p>Sorry its only lagos deliveries that can happen at the moment </p>
+            {% endif %}
+        </form>
+
+    </section>
+    <div class="summary">
+        <h1 class="summary">Order Summary</h1>
+        <div class="product-calc">
+          
+          <li class="summary">total</li>
+          <li class="summary">#{{order.totalbill}}</li>
+        </div>
+   
+       </div>
+       
+
+ </main>
+
+{% endblock %}

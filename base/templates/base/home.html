@@ -1,0 +1,88 @@
+{% extends 'main.html'%}
+{%load static %}
+
+{% block content %}
+
+
+
+<main>
+    <section class="News">
+        <nav class="image"><img src="{% static 'images/newpic.jpg'%}" alt="nav"></nav>
+        <nav class="content">
+            <h2 class='news' style=" animation:fade-out 2s ease-out 0s 1 ;" data-aos="fade-out" data-aos-duration="2000" data-aos-once="false">New Arrivals <br style="margin-left: 4%;"><h2 class="bottom" style=" animation: fade-out 2s ease-out 0s 1 ;">Are here</h2></h2>
+            <span style=" animation:fade-out 2s ease-out 0s 1 ;">Limited time price Drop</span>
+            <p style="animation:fade-out 2s ease-out 0s 1 ;">Welcome to marvelous sells, the place that has it all. Our great selection of products will cover all of your needs, no matter what they may be. Browse our inventory to discover new arrivals and best sellers and
+                 subscribe to stay in the know about upcoming deals and special offers.</p>
+        </nav>
+    </section>
+    <section id='about'class="about" >
+        <nav data-aos="fade-out" data-aos-duration="2000" data-aos-once="false">
+            <h3 class="onscroll">What We’re All About</h3>
+            <p class="about onscroll"  >From the moment we opened our doors in 2000, 
+             marvelous sells has been offering customers the best choices at unbeatable prices. 
+             Our brand encourages local manufacturing and the use of recycled materials whenever possible,
+              and works hard to keep developing fine-quality products that last. Find all that you've been
+               looking for—scroll through our vast selection today.</p>
+        </nav>
+     
+    </section>
+    <section class="contact">
+        <nav class="contactus" data-aos="fade-out" data-aos-duration="2000" data-aos-once="false">
+            <h4 class="onscroll">Contact Us</h4>
+
+            <span class="contact onscroll">17 yetunde brown ifako gbagada lagos state Nigeria</span>
+
+            <span class="onscroll">utibesolomon6@gmail.com</span>
+            <span class="onscroll">0810-298-007</span>
+        </nav>
+        <nav class="form" id="messages">
+            <form action="" method="POST" class="form">
+                {% csrf_token %}
+                <div class="form">
+                <label for="">Name :</label>
+                <input type="text" placeholder="Enter your Name" name='Name' required>
+                
+                </div>
+                <div class="form">
+                    <label for="">Email :</label>
+                    <input type="text" placeholder="Enter your Email" name='Email' required>
+                </div>
+                <div class="form">
+                    <label for="">Phone :</label>
+                    <input type="text" placeholder="Enter your phone" name="Phone" required>
+                </div>
+               
+                <div class="form">
+                    <label for="">Address :</label>
+                    <input type="text" placeholder="Enter your Address" name="Address" required>
+                </div>
+                <div class="subject form">
+                    <label for="">Subject :</label>
+                     <input type="text" placeholder="Enter your Subject" class="subject" name="Subject" required>
+                    </div>
+                <div class="Message form"> 
+                    <label for="" class="message">Message :</label>
+                    <input type="text" placeholder="Enter your Message" class="message" name="Message" required>
+                </div>
+                <div class="submit form">
+                <input type="submit" class="submit" >
+                </div>
+
+               
+            </form>
+            {% if messages %}
+            <ul class="messages" style="display:grid; place-content: center;">
+            {% for message in messages %}
+            
+          <li id="list" style="color: purple; display: block; justify-content: center;">{{message}}  <button id="close" style="display:block; place-content: center; margin-right: 40px;" >close message</button></li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+        </nav>
+    </section>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/main.js'%}"></script>
+{% endblock script %}

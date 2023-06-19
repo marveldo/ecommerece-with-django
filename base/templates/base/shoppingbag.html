@@ -1,0 +1,70 @@
+{% extends 'main2.html' %}
+{% load static %}
+
+{% block content %}
+<nav class="shopping-bag">
+    <h1 class="shopping-bag">Your shopping bag</h1>
+    </nav>
+
+   <section class="shopping-bag">
+     <div class="shopping-items">
+
+        <div class="shopping-list">
+            <div class="columm">
+                <div class="shopping-list">Product</div>
+                <div class="shopping-list">Price</div>
+                <div class="shopping-list">Quantity</div>
+                <div class="shopping-list">Total</div>
+            </div>
+             {% for order in orderlist%}
+            <div class="rows">
+                <div class="shopping-list" ><nav class="img">
+                    <img src='{{order.item.item_image.url}}' alt="">
+                    <h3 class="shopping-list">{{order.item.item_name}}</h3>
+                </nav></div>
+                <div class="shopping-list"><nav class="rows"><p class="rows"  >#{{order.item.price}}</p></nav></div>
+                <div class="shopping-list"><nav class="Quantity rows">
+                    <nav class="sub"><img class="action-button" data-id="{{order.item.id}}" data-action="add" src='{% static "images/add-line.svg" %}' alt=""></nav>
+                    <p style="border:1px solid purple">{{order.quantity}}</p>
+                    <nav class="sub"><img  class="action-button" data-id="{{order.item.id}}" data-action="remove" src='{% static "images/subtract-line.svg" %}' alt=""></nav>
+                </nav></div>
+                <div class="shopping-list"><nav class="rows">${{order.gettotal}}<span class="action-button" data-id="{{order.item.id}}" data-action="delete" style="margin-left: 30%; ">x</span></nav> </div>
+            </div>
+              {% endfor %}
+        </div>
+        </div>
+     <div class="summary">
+      <h1 class="summary">Order Summary</h1>
+      <div class="product-calc">
+  
+        
+      
+        <li class="summary">total</li>
+        <li class="summary">#{{orders.totalbill}}</li>
+      </div>
+      {% if request.user.is_authenticated %}
+      <div class="checkout"><button id="summary" class="summary" data-href="{% url 'checkout' %}">Checkout</button></div>
+      {% else %}
+      <div class="checkout">you need to login or sign up to order</div>
+      {% endif %}
+     </div>
+    
+    
+   </section>
+   {% endblock %}
+
+   
+{% block script %}
+<script src="{% static 'js/function.js' %}"></script>
+<script>
+   let checkout = document.getElementById('summary')
+
+   checkout.addEventListener('click', (e) => {
+     let location = e.target.dataset.href
+     console.log(location)
+     window.location = location
+   })
+
+  
+</script>
+{% endblock script %}
