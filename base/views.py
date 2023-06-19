@@ -70,7 +70,12 @@ def Theteam(request):
     return render(request,'base/theteam.html',context)
 def shop(request):
     page= 'shop'
-    items = Item.objects.all()
+    if request.GET.get('search'):
+        search = request.GET.get('search')
+    else:
+        search = ''
+    items = Item.objects.filter( item_name__icontains = search )
+    
     context = {'page' : page , 'items':items}
     return render(request, 'base/shop.html', context)
 

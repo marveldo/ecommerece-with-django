@@ -6,12 +6,12 @@
         {% else %}
        <a href= "{% url 'shoppingbag'%}" style="color:purple;"><i class="fa-regular fa-bag-shopping"></i></a> 
         {% endif %}  
-        <form action="" method='get'>
+        <form action="{% url 'shop'%}" method='get'>
             
-            <input type="search" placeholder="Search" class="search">
-            <input type="submit" value="Search" style="width: 50px;">
+            <input type="search" placeholder="Search" class="search" name="search">
+            <input type="submit" value="Search" style="width: 50px; background-color: #FFC0CB;
+             color: purple;">
         </form>
-    
     </nav>
     <nav class="list">
         {% if page == 'home' %}
